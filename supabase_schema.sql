@@ -34,7 +34,7 @@ stable
 security definer
 set search_path = public
 as $$
-  select coalesce((auth.jwt() ->> 'email') = 'SEU_EMAIL_ADMIN', false);
+  select coalesce((auth.jwt() ->> 'email') = 'amauri.almeidasjr@gmail.com', false);
 $$;
 
 -- Reexecutável: remove políticas anteriores com os mesmos nomes.
