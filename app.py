@@ -208,7 +208,7 @@ if page == "Overview":
     left, right = st.columns([1.25, 1])
     with left:
         st.markdown('<div class="section-label">01 / TERRITORIAL SIGNAL</div>', unsafe_allow_html=True)
-        m = folium.Map(location=[-14.5, -52.5], zoom_start=4, tiles="CartoDB dark_matter", control_scale=True)
+        m = folium.Map(location=[-14.5, -52.5], zoom_start=4, tiles="OpenStreetMap", control_scale=True)
         for row in REGIONS.itertuples(index=False):
             popup = f"<b>{safe(row.name)}</b><br>{safe(row.state)}<br>{safe(row.focus)}<br><small>Ponto de referência; não representa ocorrência confirmada.</small>"
             folium.CircleMarker([row.lat, row.lon], radius=9, color="#63dda0", fill=True, fill_color="#63dda0", fill_opacity=.78, tooltip=f"{row.name} · {row.state}", popup=popup).add_to(m)
@@ -229,7 +229,7 @@ if page == "Overview":
 
 elif page == "Event Radar":
     st.markdown('<div class="section-label">REGIONAL REFERENCE MAP</div>', unsafe_allow_html=True)
-    m = folium.Map(location=[-14.5, -52.5], zoom_start=4, tiles="CartoDB dark_matter", control_scale=True)
+    m = folium.Map(location=[-14.5, -52.5], zoom_start=4, tiles="OpenStreetMap", control_scale=True)
     for row in REGIONS.itertuples(index=False):
         folium.Marker([row.lat, row.lon], tooltip=f"{row.name} / {row.state}", popup=f"<b>{row.name}</b><br>Prioridade temática: {row.focus}", icon=folium.Icon(color="green", icon="info-sign")).add_to(m)
     st_folium(m, height=600, use_container_width=True, returned_objects=[])
